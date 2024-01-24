@@ -1,4 +1,4 @@
-# Lab Description
+# Project Description
 This project builds a FastAPI application with specified endpoints, trains a model with `sci-kit learn`, managing dependencies with `poetry`, validates data inputs and outputs with `pydantic` models, tests the application using `pytest`, creates a `Dockerfile` for containerization, and deploys the application via `kubernetes`.
 
 ## How To Deploy the API on Azure

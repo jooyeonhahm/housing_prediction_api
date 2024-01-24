@@ -10,7 +10,6 @@ kubelogin convert-kubeconfig
 az acr login --name w255mids
 az aks get-credentials --name w255-aks --resource-group w255 --overwrite-existing
 
-
 IMAGE_PREFIX=jooyeonhahm
 IMAGE_NAME=lab4
 ACR_DOMAIN=w255mids.azurecr.io
@@ -27,7 +26,6 @@ docker build -t ${IMAGE_NAME}:${TAG} .
 docker tag ${IMAGE_NAME}:${TAG} ${IMAGE_FQDN}
 docker push ${IMAGE_FQDN}
 docker pull ${IMAGE_FQDN}
-
 docker run --publish 8000:8000 --rm ${IMAGE_NAME}:${TAG}
 
 # Deploy API in AKS
