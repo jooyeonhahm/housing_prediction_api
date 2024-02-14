@@ -1,7 +1,7 @@
 [tool.poetry]
-name ="lab4"
+name ="Housing Price Prediction"
 version = "0.1.0"
-description = "Berkeley MIDS W255 Lab4"
+description = "Housing Price Prediction API"
 authors = ["jooyeonhahm <jooyeonhahm@gmail.com>"]
 readme = "README.md"
 
