@@ -1,6 +1,36 @@
 # Project Description
 This project builds a FastAPI application with specified endpoints, trains a model with `sci-kit learn`, managing dependencies with `poetry`, validates data inputs and outputs with `pydantic` models, tests the application using `pytest`, creates a `Dockerfile` for containerization, and deploys the application via `kubernetes`.
 
+## How to Run API Locally
+
+### API Features
+- `/predict` endpoint: Accepts POST requests with housing data and returns price predictions.
+- `/health` endpoint: Returns the current server time in ISO8601 format.
+- `/docs` endpoint: Serves the OpenAPI documentation.
+- `/openapi.json` endpoint: Returns the OpenAPI specification as JSON.
+
+
+### Building the API
+* Build the Docker container using the provided Dockerfile:
+        
+        docker build -t [image_name] .
+        
+
+### Running the API
+* Run the Docker container:
+        
+        docker run -d -p 8000:8000 --name [container_name] [image_name]
+        
+
+### Testing the API
+
+* Test the application using pytest:
+        
+        poetry run pytest
+        
+    This runs tests defined in test.py, checking the application's endpoints.
+
+
 ## How To Deploy the API on Azure
 
 ### Requirements
@@ -18,9 +48,9 @@ kubelogin convert-kubeconfig
 
 az acr login --name [ACR_NAME]
 az aks get-credentials --name [CLUSTER_NAME] --resource-group [RESOURCE_GROUP] --overwrite-existing
+```
 
 ### Containerization 
-
 Containerize and deploy the API using the following commands:
 
 ```shell
@@ -53,32 +83,3 @@ curl -X 'POST' 'https://$[NAMESPACE].[API_ADDRESS]/predict' -L -H 'Content-Type:
 ### Automation Script
 
 Refer to the build-push script in the home directory for an automated deployment process.
-
-## API
-
-### API Features
-- `/predict` endpoint: Accepts POST requests with housing data and returns price predictions.
-- `/health` endpoint: Returns the current server time in ISO8601 format.
-- `/docs` endpoint: Serves the OpenAPI documentation.
-- `/openapi.json` endpoint: Returns the OpenAPI specification as JSON.
-
-
-### Building the API
-* Build the Docker container using the provided Dockerfile:
-        
-        docker build -t [image_name] .
-        
-
-### Running the API
-* Run the Docker container:
-        
-        docker run -d -p 8000:8000 --name [container_name] [image_name]
-        
-
-### Testing the API
-
-* Test the application using pytest:
-        
-        poetry run pytest
-        
-    This runs tests defined in test.py, checking the application's endpoints.
