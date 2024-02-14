@@ -36,5 +36,5 @@ COPY . .
 HEALTHCHECK --start-period=30s CMD curl localhost:8000/health
 
 # Run uvicorn
-CMD ["uvicorn", "lab4.main:app", "--host", "0.0.0.0"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0"]
 
